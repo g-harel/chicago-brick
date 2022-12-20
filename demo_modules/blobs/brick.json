@@ -1,0 +1,8 @@
+{
+  "name": "blobs",
+  "client_path": "./blobs.ts",
+  "credit": {
+    "title": "Blobs",
+    "author": "Gabriel Harel"
+  }
+}
