@@ -61,6 +61,7 @@ class ExpiringCache extends Map<string, Promise<string>> {
 
 const fileCache = new ExpiringCache();
 
+// TODO broken
 async function transpile(tsPath: string): Promise<string> {
   const now = performance.now();
   const url = new URL(tsPath, import.meta.url);
@@ -104,6 +105,7 @@ export function serveDirectory(dir: string): Handler {
     const fullPath = path.join(absDir, filePath);
     const type = mime.getType(path.extname(filePath)) || "text/plain";
     try {
+      console.log("GHAREL", filePath, fullPath);
       if (filePath.endsWith(".ts")) {
         const jsCode = await transpile(fullPath);
         return plain(jsCode, "application/javascript");

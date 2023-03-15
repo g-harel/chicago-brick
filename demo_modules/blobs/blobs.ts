@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-import blobs2Animate from "https://esm.sh/blobs@2.2.1-beta.1/v2/animate";
+import blobs2Animate from "https://esm.sh/blobs@2.3.0-beta.2/v2/animate";
 
 import { CanvasSurface } from "../../client/surface/canvas_surface.ts";
 import { ModuleState } from "../../client/network/state_manager.ts";
@@ -70,6 +70,17 @@ export function load(state: ModuleState, wallGeometry: Polygon) {
           canvasOptions: blobCanvasOptions,
         });
       };
+
+      // blobs2Animate.wigglePreset(this.animation, 
+      //   {
+      //       extraPoints: 4,
+      //       randomness: 2,
+      //       seed: Math.random(),
+      //       size: 200,
+      //   },
+      //   blobCanvasOptions,
+      //   {speed: 5},
+      // );
 
       // Initial keyframe.
       this.animation.transition({

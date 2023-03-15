@@ -79,9 +79,13 @@ export function addRoutes(
 
   // We also support per-module routing.
   server.addHandler("/module/:name/:path*", async (req, match) => {
+    console.log("GHAREL" + match.pathname.groups);
+    try {
     if (library.has(match.pathname.groups.name)) {
       const def = library.get(match.pathname.groups.name)!;
+      console.log("GHAREL", "DEF", def);
       const res = await serveDirectory(def.root)(req, match);
+      console.log("GHAREL", "res", res);
       res.headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
       res.headers.set("Pragma", "no-cache");
       res.headers.set("Expires", "0");
@@ -89,6 +93,10 @@ export function addRoutes(
     } else {
       return notFound();
     }
+  } catch (e) {
+    console.error("GHAREL", e);
+    return notFound();
+  }
   });
 
   server.addHandler(

@@ -157,7 +157,7 @@ export class ClientModule {
 
   // Extracted out for testing purposes.
   static async loadPath(path: string) {
-    return await import(path);
+    return await import(path).catch((e) => console.error("GHAREL", e));
   }
 
   async instantiate() {
